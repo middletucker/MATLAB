@@ -1,0 +1,17 @@
+close all; clear all;
+
+PVTable = readtable('MousePVloops.xlsx');
+
+lgd = cell(1, length(ColorCell));
+
+figure(1); hold on
+for i = 2:18
+  Pressure = strcat('P', num2str(n));
+  Volume = strcat('V', num2str(n));
+  plot(PVTable.(Pressure),PVTable.(Volume))
+end
+
+xlabel("Pressure [cmH2O]");
+ylabel("Volume [mL]");
+
+title('MousePVloops');

@@ -1,0 +1,169 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Week15_Tues</title><meta name="generator" content="MATLAB 9.13"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-12-06"><meta name="DC.source" content="Week15_Tues.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#2">Open and read file</a></li><li><a href="#3">Create cell of colors to use for plotting</a></li><li><a href="#4">Initialize cell for legend</a></li><li><a href="#5">label and save</a></li></ul></div><pre class="codeinput">close <span class="string">all</span>; clear <span class="string">all</span>;
+</pre><h2 id="2">Open and read file</h2><pre class="codeinput">PVTable = readtable(<span class="string">'MousePVloops.xlsx'</span>);
+</pre><h2 id="3">Create cell of colors to use for plotting</h2><pre class="codeinput">ColorCell = {[0 0 1]; [0 1 0]; [1 0 0]; [1 1 1]; [1 1 0]; [1 0 1]; [0 1 1]; <span class="keyword">...</span>
+    [0.825 0.19 0.279]; [0.586 0.448 0.995]; [0.272 0.237 0.151]; <span class="keyword">...</span>
+    [0.616 0.740 0.860]; [0.799 0.884 0.613]; [0.012 0.015 0.709]; <span class="keyword">...</span>
+    [0.171 0.568 0.187]; [0.705 0.026 0.234]};
+</pre><h2 id="4">Initialize cell for legend</h2><pre class="codeinput">lgd = cell(1, length(ColorCell));
+
+a = input(<span class="string">"Input one: "</span>);
+b = input(<span class="string">"Input two: "</span>);
+c = input(<span class="string">"Input three: "</span>);
+
+<span class="comment">%Plot using for loop</span>
+figure(1); hold <span class="string">on</span>
+<span class="keyword">for</span> i = 2:18
+  Pressure = strcat(<span class="string">'P'</span>, num2str((a*2)-1));
+  Volume = strcat(<span class="string">'V'</span>, num2str(a*2));
+  plot(PVTable.(Pressure),PVTable.(Volume), <span class="string">'Color'</span>, ColorCell{i-1});
+  lgd{i-1} = strcat(<span class="string">'Time'</span>, num2str(i));
+<span class="keyword">end</span>
+
+<span class="keyword">for</span> i = 2:18
+  Pressure = strcat(<span class="string">'P'</span>, num2str((b*2)-1));
+  Volume = strcat(<span class="string">'V'</span>, num2str(b*2));
+  plot(PVTable.(Pressure),PVTable.(Volume), <span class="string">'Color'</span>, ColorCell{i-1});
+  lgd{i-1} = strcat(<span class="string">'Time'</span>, num2str(i));
+<span class="keyword">end</span>
+
+<span class="keyword">for</span> i = 2:18
+  Pressure = strcat(<span class="string">'P'</span>, num2str((c*2)-1));
+  Volume = strcat(<span class="string">'V'</span>, num2str(c*2));
+  plot(PVTable.(Pressure),PVTable.(Volume), <span class="string">'Color'</span>, ColorCell{i-1});
+  lgd{i-1} = strcat(<span class="string">'Time'</span>, num2str(i));
+<span class="keyword">end</span>
+</pre><pre class="codeoutput error">Error using input
+Cannot call INPUT from EVALC.
+
+Error in Week15_Tues (line 12)
+a = input("Input one: ");
+</pre><h2 id="5">label and save</h2><pre class="codeinput">title(<span class="string">'Mouse PV Loops'</span>);
+xlabel(<span class="string">"Pressure [cmH2O]"</span>);
+ylabel(<span class="string">"Volume [mL]"</span>);
+
+legend (lgd, <span class="string">'Location'</span>, <span class="string">'best'</span>)
+xlim([0 41])
+grid <span class="string">on</span>
+
+saveas(figure(1), <span class="string">'PVLoops2'</span>, <span class="string">'pdf'</span>);
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+close all; clear all;
+%% Open and read file
+PVTable = readtable('MousePVloops.xlsx');
+%% Create cell of colors to use for plotting
+ColorCell = {[0 0 1]; [0 1 0]; [1 0 0]; [1 1 1]; [1 1 0]; [1 0 1]; [0 1 1]; ...
+    [0.825 0.19 0.279]; [0.586 0.448 0.995]; [0.272 0.237 0.151]; ...
+    [0.616 0.740 0.860]; [0.799 0.884 0.613]; [0.012 0.015 0.709]; ...
+    [0.171 0.568 0.187]; [0.705 0.026 0.234]};
+%% Initialize cell for legend
+lgd = cell(1, length(ColorCell));
+
+a = input("Input one: ");
+b = input("Input two: ");
+c = input("Input three: ");
+
+%Plot using for loop
+figure(1); hold on
+for i = 2:18
+  Pressure = strcat('P', num2str((a*2)-1));
+  Volume = strcat('V', num2str(a*2));
+  plot(PVTable.(Pressure),PVTable.(Volume), 'Color', ColorCell{i-1});
+  lgd{i-1} = strcat('Time', num2str(i));
+end
+
+for i = 2:18
+  Pressure = strcat('P', num2str((b*2)-1));
+  Volume = strcat('V', num2str(b*2));
+  plot(PVTable.(Pressure),PVTable.(Volume), 'Color', ColorCell{i-1});
+  lgd{i-1} = strcat('Time', num2str(i));
+end
+
+for i = 2:18
+  Pressure = strcat('P', num2str((c*2)-1));
+  Volume = strcat('V', num2str(c*2));
+  plot(PVTable.(Pressure),PVTable.(Volume), 'Color', ColorCell{i-1});
+  lgd{i-1} = strcat('Time', num2str(i));
+end
+%% label and save
+
+title('Mouse PV Loops');
+xlabel("Pressure [cmH2O]");
+ylabel("Volume [mL]");
+
+legend (lgd, 'Location', 'best')
+xlim([0 41])
+grid on
+
+saveas(figure(1), 'PVLoops2', 'pdf');
+##### SOURCE END #####
+--></body></html>

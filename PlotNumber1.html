@@ -1,0 +1,136 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>PlotNumber1</title><meta name="generator" content="MATLAB 9.13"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-12-14"><meta name="DC.source" content="PlotNumber1.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput"><span class="comment">% Lillian Tucker</span>
+<span class="comment">% CSCI 130</span>
+<span class="comment">% Final Exam Code: Out of script File</span>
+<span class="comment">% 12/14/2022</span>
+
+<span class="keyword">function</span> PlotNumber1(y1)
+y_sort = sort(y1, <span class="string">'descend'</span>); <span class="comment">%sort to descend and assign to vector</span>
+
+
+y_pos = y_sort( y_sort&gt;=0 ); <span class="comment">%assign poitive values to vector</span>
+l_pos = length(y_pos);
+x_pos = [1:1:l_pos];
+
+y_neg = y_sort( y_sort&lt;0 ); <span class="comment">% assign negative values to vector</span>
+l_neg = length(y_neg);<span class="comment">% value to determine x value array</span>
+x_neg = [l_pos+1:1:l_neg+l_pos]; <span class="comment">%start after positive values</span>
+
+Rho_min = min(y1);
+Rho_max = max(y1);
+figure(1)
+scatter(x_pos, y_pos, <span class="string">'k'</span>, <span class="string">'filled'</span>, <span class="string">'Marker'</span>, <span class="string">'s'</span>)
+hold <span class="string">on</span>
+scatter(x_neg, y_neg, <span class="string">'r'</span>, <span class="string">'filled'</span>, <span class="string">'Marker'</span>, <span class="string">'s'</span>)
+
+xlabel(<span class="string">'Data [#]'</span>)
+ylabel(<span class="string">'Spearman Rho Value'</span>)
+title(<span class="string">"Spearman Rho( "</span>+Rho_min+<span class="string">" to "</span>+Rho_max+<span class="string">")"</span>)
+grid <span class="string">on</span>
+<span class="keyword">end</span>
+</pre><pre class="codeoutput error">Not enough input arguments.
+
+Error in PlotNumber1 (line 7)
+y_sort = sort(y1, 'descend'); %sort to descend and assign to vector
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+% Lillian Tucker
+% CSCI 130
+% Final Exam Code: Out of script File
+% 12/14/2022
+
+function PlotNumber1(y1)
+y_sort = sort(y1, 'descend'); %sort to descend and assign to vector
+
+
+y_pos = y_sort( y_sort>=0 ); %assign poitive values to vector
+l_pos = length(y_pos); 
+x_pos = [1:1:l_pos];
+
+y_neg = y_sort( y_sort<0 ); % assign negative values to vector
+l_neg = length(y_neg);% value to determine x value array
+x_neg = [l_pos+1:1:l_neg+l_pos]; %start after positive values
+
+Rho_min = min(y1);
+Rho_max = max(y1);
+figure(1)
+scatter(x_pos, y_pos, 'k', 'filled', 'Marker', 's')
+hold on
+scatter(x_neg, y_neg, 'r', 'filled', 'Marker', 's')
+
+xlabel('Data [#]')
+ylabel('Spearman Rho Value')
+title("Spearman Rho( "+Rho_min+" to "+Rho_max+")")
+grid on
+end
+
+##### SOURCE END #####
+--></body></html>

@@ -1,0 +1,231 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>TUCKER_Final_Q2</title><meta name="generator" content="MATLAB 9.13"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-12-14"><meta name="DC.source" content="TUCKER_Final_Q2.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#2">Read Table</a></li><li><a href="#3">Initialize input</a></li><li><a href="#4">Keep prompting until accepted value entered</a></li><li><a href="#5">Take out needed table values and assign to vectors</a></li><li><a href="#6">If else to determine which plot to graph</a></li><li><a href="#7">function for 2nd plot</a></li></ul></div><pre class="codeinput"><span class="comment">% Lillian Tucker</span>
+<span class="comment">% CSCI 130</span>
+<span class="comment">% Final Exam Code</span>
+<span class="comment">% 12/14/2022</span>
+close <span class="string">all</span>; clear <span class="string">all</span>;
+</pre><h2 id="2">Read Table</h2><pre class="codeinput">StatTable = readtable(<span class="string">'StatData.xlsx'</span>);
+</pre><h2 id="3">Initialize input</h2><pre class="codeinput">x = input(<span class="string">'Select the plot you want to see by entering 1 or 2\n'</span>);
+</pre><pre class="codeoutput error">Error using input
+Cannot call INPUT from EVALC.
+
+Error in TUCKER_Final_Q2 (line 9)
+x = input('Select the plot you want to see by entering 1 or 2\n');
+</pre><h2 id="4">Keep prompting until accepted value entered</h2><pre class="codeinput"><span class="keyword">while</span> (x ~= 1) &amp;&amp; (x ~= 2)
+disp(<span class="string">'Please enter either 1 or 2'</span>)
+disp(<span class="string">'Other values wil not be accepted'</span>)
+x = input(<span class="string">'Select which plot you want to see by entering 1 or 2\n'</span>);
+<span class="keyword">end</span>
+</pre><h2 id="5">Take out needed table values and assign to vectors</h2><pre class="codeinput">y1 = StatTable.SpearmanRho;
+
+y2 = StatTable.RMSEnormalized;
+x2 = StatTable.NumObserv;
+    [percent1, percent2] = PlotNumber2(x2);
+    figure(2)
+    scatter(x2, y2)
+    hold <span class="string">on</span>
+    xlabel(<span class="string">'Observations [#]'</span>)
+    ylabel(<span class="string">'Normalized Root Mean Squared Error'</span>)
+    title(<span class="string">"RMSEnromalized vs Observations(45: "</span>+ percent1 +<span class="string">"%, 37: "</span>+percent2+<span class="string">"%)"</span>)
+    grid <span class="string">on</span>
+</pre><h2 id="6">If else to determine which plot to graph</h2><pre class="codeinput"><span class="keyword">if</span> x == 1
+    PlotNumber1(y1) <span class="comment">% redirect to function in other script file</span>
+<span class="keyword">elseif</span> x == 2
+
+<span class="keyword">end</span>
+
+<span class="comment">%{
+</span><span class="comment">function PlotNumber1(y1)
+</span><span class="comment">y_sort = sort(y1, 'descend');
+</span><span class="comment">
+</span><span class="comment">
+</span><span class="comment">y_pos = y_sort( y_sort&gt;=0 );
+</span><span class="comment">l_pos = length(y_pos);
+</span><span class="comment">x_pos = [1:1:l_pos];
+</span><span class="comment">
+</span><span class="comment">y_neg = y_sort( y_sort&lt;0 );
+</span><span class="comment">l_neg = length(y_neg);
+</span><span class="comment">x_neg = [l_pos+1:1:l_neg+l_pos];
+</span><span class="comment">
+</span><span class="comment">Rho_min = min(y1);
+</span><span class="comment">Rho_max = max(y1);
+</span><span class="comment">figure(1)
+</span><span class="comment">scatter(x_pos, y_pos, 'k', 'filled', 'Marker', 's')
+</span><span class="comment">hold on
+</span><span class="comment">scatter(x_neg, y_neg, 'r', 'filled', 'Marker', 's')
+</span><span class="comment">
+</span><span class="comment">xlabel('Data [#]')
+</span><span class="comment">ylabel('Spearman Rho Value')
+</span><span class="comment">title("Spearman Rho( "+Rho_min+" to "+Rho_max+")")
+</span><span class="comment">grid on
+</span><span class="comment">end
+</span><span class="comment">%}</span>
+</pre><h2 id="7">function for 2nd plot</h2><pre class="codeinput"><span class="keyword">function</span> [percent1, percent2] = PlotNumber2(x2)
+count1 = 0;
+count2 = 0;
+
+<span class="keyword">for</span> i = 1:length(x2) <span class="comment">% for to read each value in vector</span>
+    <span class="keyword">if</span> x2(i) == 45
+        count1 = count1+1;
+
+    <span class="keyword">elseif</span> x2(i) == 37
+        count2 = count2+1;
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+percent1 = (count1/length(x2))*100;
+percent2 = (count2/length(x2))*100;
+<span class="keyword">end</span>
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+% Lillian Tucker
+% CSCI 130
+% Final Exam Code
+% 12/14/2022
+close all; clear all;
+%% Read Table
+StatTable = readtable('StatData.xlsx');
+%% Initialize input
+x = input('Select the plot you want to see by entering 1 or 2\n');
+
+%% Keep prompting until accepted value entered
+while (x ~= 1) && (x ~= 2)
+disp('Please enter either 1 or 2')
+disp('Other values wil not be accepted')
+x = input('Select which plot you want to see by entering 1 or 2\n');
+end
+
+%% Take out needed table values and assign to vectors
+y1 = StatTable.SpearmanRho;
+
+y2 = StatTable.RMSEnormalized;
+x2 = StatTable.NumObserv;
+    [percent1, percent2] = PlotNumber2(x2);
+    figure(2)
+    scatter(x2, y2)
+    hold on
+    xlabel('Observations [#]')
+    ylabel('Normalized Root Mean Squared Error')
+    title("RMSEnromalized vs Observations(45: "+ percent1 +"%, 37: "+percent2+"%)")
+    grid on
+
+%% If else to determine which plot to graph
+if x == 1
+    PlotNumber1(y1) % redirect to function in other script file
+elseif x == 2
+
+end
+
+%{
+function PlotNumber1(y1)
+y_sort = sort(y1, 'descend');
+
+
+y_pos = y_sort( y_sort>=0 );
+l_pos = length(y_pos);
+x_pos = [1:1:l_pos];
+
+y_neg = y_sort( y_sort<0 );
+l_neg = length(y_neg);
+x_neg = [l_pos+1:1:l_neg+l_pos];
+
+Rho_min = min(y1);
+Rho_max = max(y1);
+figure(1)
+scatter(x_pos, y_pos, 'k', 'filled', 'Marker', 's')
+hold on
+scatter(x_neg, y_neg, 'r', 'filled', 'Marker', 's')
+
+xlabel('Data [#]')
+ylabel('Spearman Rho Value')
+title("Spearman Rho( "+Rho_min+" to "+Rho_max+")")
+grid on
+end
+%}
+%% function for 2nd plot
+function [percent1, percent2] = PlotNumber2(x2) 
+count1 = 0;
+count2 = 0;
+
+for i = 1:length(x2) % for to read each value in vector
+    if x2(i) == 45
+        count1 = count1+1;
+    
+    elseif x2(i) == 37
+        count2 = count2+1;
+    end
+end
+percent1 = (count1/length(x2))*100;
+percent2 = (count2/length(x2))*100;
+end
+
+
+##### SOURCE END #####
+--></body></html>
